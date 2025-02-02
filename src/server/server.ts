@@ -1,4 +1,5 @@
 import express from 'express';
+import config from './config';
 
 const server = express();
 
@@ -8,12 +9,12 @@ server.set("view engine", "ejs");
 
 server.use("/", (req, res) => {
     res.render("index", {
-        content: "EJS is <em>cool!"
+        initialContent: "Loading..."
     });
 });
 
-server.listen("8080", "0.0.0.0", () => {
+server.listen(config.PORT, config.HOST, () => {
     console.info(
-        "Express server is listening at http://0.0.0.0:8080"
+        `Express server is listening at ${config.SERVER_URL}`
     );
 });
